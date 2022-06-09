@@ -1,4 +1,15 @@
 
+
+const choice = document.querySelector('.btn');
+
+choice.forEach(Listening(btn));
+
+function Listening(btn){
+    btn.addEventListener('click', function(e){
+        console.log(e.target)
+    });
+}
+
 const choices = ['Rock','Paper','Scissors'];
 let pOne = 0;
 let pTwo = 0;

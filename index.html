@@ -5,10 +5,127 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="script.js"></script>
-    <style src="styles.css"></style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    
+<div class="content">
+    <button class="a">Rock</button>
+    <button class="a">Paper</button>
+    <button class="a">Scissors</button>
+    <br>
+    <button id="begin">Start Game</button>
+</div>
+
 </body>
+
+
+<script>
+const choices = ['Rock','Paper','Scissors'];
+let pOne = 0;
+let pTwo = 0;
+
+/* Function that will choose a move for the computer and return the choice*/
+function computerPlay(){
+    computerChoice = choices[Math.floor(Math.random()*choices.length)];
+    console.log(computerChoice);
+    return computerChoice;
+}
+
+/* Function that will prompt user for text input choice and return the choice --- CURRENTLY NOT IN USE*/
+function playerPlay(){
+    alert("Please select between rock, paper, and scissors");
+    const choice = document.querySelectorAll('.a');
+choice.forEach(function(a){
+    a.addEventListener('click', function(e){
+        inbtw = a.textContent;
+        playerChoice = inbtw.toLowerCase();
+        console.log(playerChoice);
+});
+});
+};
+
+/* Function that will decide the winner of the game between two players, decision logic of rock-paper-scissors*/
+function decideWinner(playerOne,playerTwo){
+    switch(playerOne){
+        case 'rock':
+            if (playerTwo == 'Rock'){
+                console.log("Draw!");
+            }
+            else if (playerTwo == 'Scissors'){;
+                console.log("Player One Wins!");
+                return pOne ++;
+            }
+            else{
+                console.log("Player One Loses!");
+                return pTwo ++;
+            }
+            break;
+        case 'scissors':
+            if (playerTwo == 'Scissors'){
+                console.log("Draw!");
+            }
+            else if (playerTwo == 'Paper'){
+                console.log("Player One Wins!");
+                return pOne ++;
+            }
+            else{
+                console.log("Player One Loses!");
+                return pTwo ++;
+            }
+            break;
+        case 'paper':
+            if (playerTwo == 'Paper'){
+                console.log("Draw!");
+            }
+            else if (playerTwo == 'Rock'){
+                console.log("Player One Wins!");
+                return pOne ++;
+            }
+            else{
+                console.log("Player One Loses!");
+                return pTwo ++;
+            }
+            break;
+
+        }
+
+    }
+
+/* Function that will 1. Defines score counter, plays for 5 rounds or untill
+                         player one or two win 3 rounds
+
+                      2. (f) Prompt player choice;
+                         (f) Randomly select computer choice;
+                         (f) Decide the winner and return the result 
+*/
+
+
+const startgame = document.querySelector('#begin')
+startgame.addEventListener('click',function(){
+
+    const choice = document.querySelectorAll('.a');
+
+    choice.forEach(function(a){
+    a.addEventListener('click', function(e){
+    inbtw = a.textContent;
+    playerChoice = inbtw.toLowerCase();
+    console.log(playerChoice);
+    for (i = 0; i < 1; i++) {
+    computerPlay();
+    decideWinner(playerChoice,computerChoice);
+    console.log(pOne);
+    console.log(pTwo);
+    if (pOne == 3 || pTwo == 3 || i == 5) break;
+    }
+    if (pOne > pTwo){
+        console.log("Player One wins the game!");
+        return [pOne, pTwo] = [0,0];
+    }
+    else {
+        console.log("Player Two wins the game!");
+        return [pOne, pTwo] = [0,0];
+    }
+})});
+});
+</script>
 </html>
